@@ -1,20 +1,10 @@
 import OpenAI from "openai";
 
-//import { OpenAIStream, StreamingTextResponse } from "ai"
 import { streamText } from "ai";
 import { openai } from '@ai-sdk/openai';
 
 
 import { DataAPIClient } from "@datastax/astra-db-ts"
-
-/*{
-  "messages": [
-    { "role": "user", "content": "Hey!" },
-    { "role": "assistant", "content": "Hello there" },
-    { "role": "user", "content": "What's the weather like?" }
-  ]
-}*/
-
 
 // Load environment variables
 const {
@@ -42,7 +32,6 @@ export async function POST(req: Request) {
         
         console.log("messages.messages:",  messages.messages);
 
-        //const latestMessage = messages[messages?.length - 1]?.content
         const latestMessage = messages.messages?.[messages.messages.length - 1]?.content;
 
 
@@ -51,12 +40,6 @@ export async function POST(req: Request) {
 
         let docContext = ""
 
-        /*if (!Array.isArray(messages) || messages.length === 0) {
-            console.error("No messages found in request body");
-        } else {
-
-            console.log("Latest message content:", latestMessage);        
-        }*/
         const embedding = await openai_client.embeddings.create({
                 model: "text-embedding-3-small",
                 input: latestMessage,
@@ -118,16 +101,7 @@ export async function POST(req: Request) {
         // Respond with the streamed text
         console.log(22222, response.toDataStreamResponse());
         return response.toDataStreamResponse();        
-/*
-        const response = await openai_client.chat.completions.create({
-            model: "gpt-4o-mini",
-            stream: true,
-            messages: [template, ...messages] 
-        })
 
-        const stream= OpenAIStream(response)
-        return new StreamingTextResponse (stream)
-*/
     } catch (err) {
         throw err
     }
