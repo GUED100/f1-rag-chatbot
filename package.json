@@ -6,17 +6,29 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "seed": "ts-node ./scripts/loadDb.ts",
+    "lint": "next lint",
+    "test1": "ts-node ./app/api/chat//query_tests.ts"
   },
   "dependencies": {
+    "@datastax/astra-db-ts": "^2.0.2",
+    "@langchain/community": "^0.3.49",
+    "@langchain/core": "^0.3.66",
+    "ai": "^4.3.19",
+    "axios": "^1.11.0",
+    "dotenv": "^17.2.1",
+    "langchain": "^0.3.30",
+    "next": "15.4.4",
+    "openai": "^5.10.2",
+    "puppeteer": "^24.15.0",
     "react": "19.1.0",
     "react-dom": "19.1.0",
-    "next": "15.4.4"
+    "ts-node": "^10.9.2"
   },
   "devDependencies": {
-    "typescript": "^5",
     "@types/node": "^20",
     "@types/react": "^19",
-    "@types/react-dom": "^19"
+    "@types/react-dom": "^19",
+    "typescript": "^5"
   }
 }

@@ -1,40 +1,38 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/pages/api-reference/create-next-app).
+# 🏎️ Formula 1 Chatbot — Real-Time News & Semantic Search
 
-## Getting Started
+Your personal AI assistant for everything Formula 1. This project uses cutting-edge tech to scrape, embed, and query F1 news so fans can chat about the latest updates with style and speed.
 
-First, run the development server:
+---
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## 🚀 Features
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- 🔍 Context-aware responses with real-time F1 news
+- 🧠 OpenAI embeddings + GPT-4o-mini for smart replies
+- 🗂️ Vector search using Astra DB
+- 🌐 Web scraping via Puppeteer for fresh data
+- 💬 Streaming chat responses for smooth UX
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+---
 
-[API routes](https://nextjs.org/docs/pages/building-your-application/routing/api-routes) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+## 🛠️ Stack & Dependencies
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/pages/building-your-application/routing/api-routes) instead of React pages.
+| Tech/Library                | Purpose                                       |
+|----------------------------|-----------------------------------------------|
+| `LangChain`                | Web content loading & text splitting          |
+| `OpenAI SDK`               | Embedding generation and chat responses       |
+| `Datastax Astra DB`        | Storing and searching vector embeddings       |
+| `ai-sdk` + `streamText()`  | OpenAI streaming integration                  |
+| `TypeScript` + `Node.js`   | App logic and type safety                     |
+| `Puppeteer`                | Scraping F1 content from various sources      |
+| `dotenv`                   | Secure secrets management                     |
 
-This project uses [`next/font`](https://nextjs.org/docs/pages/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+---
 
-## Learn More
+## Usage
+- Make sure to have an account to https://astra.datastax.com. 
+- Create a .env file and provide the info for: ASTRA_DB_NAMESPACE, ASTRA_DB_COLLECTION, ASTRA_DB_API_ENDPOINT, ASTRA_DB_APPLICATION_TOKEN, OPENAI_API_KEY
+- Make sure the npm dependencies modules are properly install (See package.json)
+- 1) run "npm run seed" to create the collection, then ingest data (see scripts\loadDb.ts)
+     Feel free to extend the list of F1 sites to consider to the DB creation.
+- 2) run "npm run dev" to run the Front-end and perform the queries tasks.
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn-pages-router) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/pages/building-your-application/deploying) for more details.
